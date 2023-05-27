@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
-import { VideoType } from "../../types/video";
+import { VideoType } from "../../types/Video";
 import { RiShareForwardFill } from "react-icons/ri";
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { MdInsertComment } from "react-icons/md";

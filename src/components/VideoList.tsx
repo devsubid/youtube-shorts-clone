@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import Video from "./Video";
-import type { VideoType } from "../../types/video";
+import type { VideoType } from "../../types/Video";
 import { styled } from "styled-components";
 import { toast } from "react-hot-toast";
 import InfiniteScroll from "react-infinite-scroll-component";
