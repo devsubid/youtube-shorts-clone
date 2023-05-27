@@ -23,6 +23,7 @@ const VideoStyled = styled.div`
     aspect-ratio: 9 / 16;
     position: relative;
     border-radius: 1rem;
+    max-width: calc(100vw - 2.5rem);
     overflow: hidden;
     video {
       height: 100%;
