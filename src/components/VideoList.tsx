@@ -48,7 +48,6 @@ const VideoList = () => {
       const res: AxiosResponse<ApiResponseType> = await axios.get(
         `https://internship-service.onrender.com/videos?page=${currentPage}`
       );
-
       setVideos((prevVideos) => {
         const filteredVideos = res.data.data.posts.filter(
           (video) => !prevVideos.some((v) => v.postId === video.postId)
@@ -81,7 +80,10 @@ const VideoList = () => {
           next={handleNextPage}
           hasMore={true}
           loader={<span className="loader"></span>}
-          endMessage={<></>}
+          endMessage={<p className="end-message">You have reached the end!</p>}
+          onScroll={() => {
+            scrollBy(0, -1);
+          }}
           className="video-list"
         >
           {playingVideo &&
