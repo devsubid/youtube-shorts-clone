@@ -88,6 +88,7 @@ const VideoStyled = styled.div`
           width: 2.25rem;
           height: 2.25rem;
           border-radius: 50%;
+          object-fit: cover;
         }
         button {
           padding: 0.25rem 0.5rem;
