@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
   & span.loader {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     width: 1rem;
     height: 1rem;
     border: 2px solid #FFF;

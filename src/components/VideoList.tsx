@@ -59,7 +59,6 @@ const VideoList = () => {
       toast.error("Something went wrong!");
     }
   };
-
   useEffect(() => {
     getVideos(page);
   }, [page]);
@@ -67,11 +66,9 @@ const VideoList = () => {
   useEffect(() => {
     setPlayingVideo(videos?.length ? videos[0].postId : null);
   }, [videos]);
-
   const handleNextPage = () => {
     setPage((prevPage) => prevPage + 1);
   };
-
   return (
     <VideoListStyled className="container">
       {videos.length ? (
@@ -88,15 +85,14 @@ const VideoList = () => {
         >
           {playingVideo &&
             videos.map((video) => (
-              <div className="video" key={video.postId}>
-                <Video
-                  video={video}
-                  mute={mute}
-                  setMute={setMute}
-                  playingVideo={playingVideo}
-                  setPlayingVideo={setPlayingVideo}
-                />
-              </div>
+              <Video
+                key={video.postId}
+                video={video}
+                mute={mute}
+                setMute={setMute}
+                playingVideo={playingVideo}
+                setPlayingVideo={setPlayingVideo}
+              />
             ))}
         </InfiniteScroll>
       ) : (
