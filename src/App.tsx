@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-color: 255 0 0;
     --secondary-color: 62 166 255;
     --success-color: 3 179 10;
+    --like-color: 16 110 190;
     --font-poppins: 'Poppins', system-ui, sans-serif;
     scroll-behavior: smooth;
   }

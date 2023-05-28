@@ -10,6 +10,7 @@ import {
   IoMdVolumeHigh,
   IoMdVolumeOff,
 } from "react-icons/io";
+import { toast } from "react-hot-toast";
 
 const VideoStyled = styled.div`
   display: flex;
@@ -111,6 +112,16 @@ const VideoStyled = styled.div`
           color: rgb(var(--light-color));
           text-align: center;
         }
+        &.like {
+          & button.liked {
+            color: rgb(var(--like-color));
+          }
+        }
+        &.dislike {
+          & button.disliked {
+            color: rgb(var(--primary-color));
+          }
+        }
       }
       button {
         border-radius: 50%;
@@ -146,13 +157,26 @@ const Video = ({
   playingVideo: string | null;
   setPlayingVideo: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
-  const handleLike = () => {
-    console.log({
-      postID: video.postId,
-    });
-  };
   const videoRef = useRef<HTMLVideoElement>(null);
   const [play, setPlay] = useState(video.postId === playingVideo);
+  const [liked, setLiked] = useState<boolean>(false);
+  const [disliked, setDisliked] = useState<boolean>(false);
+  const handleLike = () => {
+    setDisliked(false);
+    setLiked((prevLiked) => !prevLiked);
+  };
+  const handleDislike = () => {
+    setLiked(false);
+    setDisliked((prevDisliked) => !prevDisliked);
+    toast.success("Thank you for your feedback!");
+  };
+  const handleShare = () => {
+    navigator.clipboard.writeText(video.submission.mediaUrl);
+    toast.success("Video link copied to clipboard!");
+  };
+  const handleComment = () => {
+    toast.success("Comment feature coming soon!");
+  };
   useEffect(() => {
     const currentVideoRef = videoRef.current;
     const observer = new IntersectionObserver(
@@ -269,17 +293,24 @@ const Video = ({
               title="I like this"
               onClick={handleLike}
               aria-label="I like this"
-              className={`like-button ${video.reaction.voted ? "liked" : ""}`}
+              className={`like-button ${liked ? "liked" : ""}`}
             >
               <FaThumbsUp />
             </button>
-            <span>Like</span>
+            <span>
+              {video.reaction.count > 0
+                ? liked
+                  ? video.reaction.count + 1
+                  : video.reaction.count
+                : "Like"}
+            </span>
           </div>
           <div className="dislike">
             <button
-              title="I like this"
-              onClick={handleLike}
-              aria-label="I like this"
+              title="I dislike this"
+              onClick={handleDislike}
+              aria-label="I dislike this"
+              className={`dislike-button ${disliked ? "disliked" : ""}`}
             >
               <FaThumbsDown />
             </button>
@@ -287,20 +318,16 @@ const Video = ({
           </div>
           <div className="comment">
             <button
-              title="I like this"
-              onClick={handleLike}
-              aria-label="I like this"
+              title="Comment"
+              aria-label="Comment"
+              onClick={handleComment}
             >
               <MdInsertComment />
             </button>
             <span>0</span>
           </div>
           <div className="share">
-            <button
-              title="I like this"
-              onClick={handleLike}
-              aria-label="I like this"
-            >
+            <button title="Share" onClick={handleShare} aria-label="Share">
               <RiShareForwardFill />
             </button>
             <span>Share</span>
