@@ -59,6 +59,7 @@ const VideoList = () => {
       toast.error("Something went wrong!");
     }
   };
+
   useEffect(() => {
     getVideos(page);
   }, [page]);

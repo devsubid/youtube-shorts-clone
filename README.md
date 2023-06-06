@@ -12,7 +12,7 @@
 
 </div>
 
-Welcome to the Youtube-Shorts-Clone repository! Youtube-Shorts-Clone is a visually stunning website built using Next.js, TypeScript, and Styled-Components. It is a beautiful website that is primarily focused on courses for programming enthusiasts. The project is a front-end development endeavor and can be found on GitHub.
+Welcome to the Youtube-Shorts-Clone repository! Youtube-Shorts-Clone is a visually stunning website built using Next.js, TypeScript, and Styled-Components. The project is a front-end development endeavor and can be found on [GitHub](https://github.com/itsme-Subid/Youtube-Shorts-Clone).
 
 ## Getting Started
 
